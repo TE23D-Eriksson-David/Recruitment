@@ -1,33 +1,29 @@
 ﻿
 using SC = System.Console;
 
+
+
+bool run = true;
 string name = ""; 
 string Choice;
 bool Active = true;
 string strRecruit;
 int reamovePlace = 0;
 
-//List<string> listNamn = new List<string>();
-List<string> listPeople = ["Jacob", "Emelie", "Michael"];
-List<string> listrecrutedPeople = ["","",""];
+
+List<string> listPeople = ["Jacob","Emelie","Michael"];
+List<string> listrecrutedPeople = ["Emphty","Emphty","Emphty"];
 
 
-//listPeople.Add($"{name}");
-//listPeople.Remove($"{name}");
 
-//int length = listPeople.Count;
 
-//listPeople.RemoveAt(reamovePlace);
 
-/*
 string[] arylistPeople = listPeople.ToArray();
 
-Console.WriteLine(names[n]); // #0 = pls 1 
-
-string[] contents = File.ReadAllLines(@"localfile.txt");
 
 
-*/
+
+
 
 String filepath = @"C:\Users\david.eriksson5\Desktop\Programering VS\Recruitment\Recruitment\NamesRecruitment";
 string info = File.ReadAllText(filepath);
@@ -36,17 +32,16 @@ SC.WriteLine(info);
 
 
 
-while(true){
+while(run == true){
 
 string[] aPeople = listPeople.ToArray();
 
 string[] aRecPeople = listrecrutedPeople.ToArray();
 
-Console.WriteLine($"mdmns{aPeople[^2]}"); 
+
 SC.ReadLine();
 
-SC.WriteLine(@$"
-Write the persons number, to select them for hiering 
+SC.WriteLine(@$"Write the persons number, to select them for hiering 
 or to remove them from the recruted.
 
  Avalible people        Recruted People
@@ -60,15 +55,15 @@ or to remove them from the recruted.
   ___       ___          ___       ___  
  |  _|     |_  |        |  _|     |_  |
  | |         | |        | |         | | 
-    {aPeople[^2]}          {aRecPeople[^2]}
-        2                       5
+      {aPeople[^2]}          {aRecPeople[^2]}
+        2                      5
  | |_       _| |        | |_       _| |   
  |___|     |___|        |___|     |___|
   ___       ___          ___       ___
  |  _|     |_  |        |  _|     |_  |   
  | |         | |        | |         | |
-    {aPeople[^3]}          {aRecPeople[^3]}
-        3                       6
+      {aPeople[^3]}          {aRecPeople[^3]}
+        3                      6
  | |_       _| |        | |_       _| |
  |___|     |___|        |___|     |___| 
                      
@@ -125,3 +120,51 @@ break;
 
 SC.Clear();
 }
+
+
+/*
+//List<string> listNamn = new List<string>();
+//listPeople.Add($"{name}");
+//listPeople.Remove($"{name}");
+
+//int length = listPeople.Count;
+
+//listPeople.RemoveAt(reamovePlace);
+
+//string[] contents = File.ReadAllLines(@"localfile.txt");
+
+//Console.WriteLine($"mdmns{aPeople[1]}"); 
+*/
+
+
+
+
+
+/*
+int s = Random.Shared.Next(5);
+
+List<string> names;
+List<string> name = [];
+List<string> nam = ["micke","martin","Lena"];
+
+/*Console.WriteLine(nam[^1]);
+string ost = SC.ReadLine();
+if (ost == nam[1]){
+    SC.WriteLine("");
+}
+
+nam[1] = "Nicholas";
+nam.Add("Jacob");
+
+
+// for (int i = 0; i < nam.Count; i++)
+// {
+//     SC.WriteLine(nam[i]);
+// }
+
+//SC.WriteLine(string.Join("\n", nam));
+
+nam.Remove(nam[1]); // index
+nam.RemoveAt(0); // värde
+SC.ReadLine();
+*/
