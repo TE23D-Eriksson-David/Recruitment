@@ -4,42 +4,34 @@ using SC = System.Console;
 
 
 bool run = true;
-string name = ""; 
+//string name = "";
 string Choice;
 bool Active = true;
 string strRecruit;
-int reamovePlace = 0;
+//int reamovePlace = 0;
+int intname = 0;
 
 
-List<string> listPeople = ["Jacob","Emelie","Michael"];
-List<string> listrecrutedPeople = ["Emphty","Emphty","Emphty"];
-
-
-
-
+List<string> listPeople = ["Jacob", "Emelie", "Michael"];
+List<string> listrecrutedPeople = ["Emphty", "Emphty", "Emphty"];
 
 string[] arylistPeople = listPeople.ToArray();
-
-
-
 
 
 
 String filepath = @"C:\Users\david.eriksson5\Desktop\Programering VS\Recruitment\Recruitment\NamesRecruitment";
 string info = File.ReadAllText(filepath);
 SC.WriteLine(info);
-
-
-
-
-while(run == true){
-
-string[] aPeople = listPeople.ToArray();
-
-string[] aRecPeople = listrecrutedPeople.ToArray();
-
-
 SC.ReadLine();
+
+
+while (run == true)
+{
+
+    string[] aPeople = listPeople.ToArray();
+
+    string[] aRecPeople = listrecrutedPeople.ToArray();
+
 
 SC.WriteLine(@$"Write the persons number, to select them for hiering 
 or to remove them from the recruted.
@@ -48,21 +40,21 @@ or to remove them from the recruted.
   ___       ___          ___       ___   
  |  _|     |_  |        |  _|     |_  |  
  | |         | |        | |         | | 
-     {aPeople[^1]}         {aRecPeople[^1]}
+     {aPeople[0]}                 {aRecPeople[^1]}
         1                      4 
  | |_       _| |        | |_       _| | 
  |___|     |___|        |___|     |___| 
   ___       ___          ___       ___  
  |  _|     |_  |        |  _|     |_  |
  | |         | |        | |         | | 
-      {aPeople[^2]}          {aRecPeople[^2]}
+      {aPeople[1]}                 {aRecPeople[^2]}
         2                      5
  | |_       _| |        | |_       _| |   
  |___|     |___|        |___|     |___|
   ___       ___          ___       ___
  |  _|     |_  |        |  _|     |_  |   
  | |         | |        | |         | |
-      {aPeople[^3]}          {aRecPeople[^3]}
+      {aPeople[2]}                  {aRecPeople[^3]}
         3                      6
  | |_       _| |        | |_       _| |
  |___|     |___|        |___|     |___| 
@@ -70,56 +62,52 @@ or to remove them from the recruted.
 ");
 
 
-strRecruit = SC.ReadLine().ToLower();
-SC.WriteLine(strRecruit);
+    strRecruit = SC.ReadLine().ToLower();
+    intname = int.Parse(strRecruit);
 
 
-Active = true;
-switch((string)(strRecruit)){
+    Active = true;
 
-case (string)("1"):
-while(Active == true){
-SC.WriteLine($"Do you want to move {aPeople[^1]} to the recruted list?");
-SC.WriteLine("Write: Yes or No.");
-Choice = SC.ReadLine().ToLower();
-if (Choice == "yes"){
-    Active = false;
-    listrecrutedPeople.Add(aPeople[1]);
-    listPeople.RemoveAt(1);
+    if (intname != 0 && intname < 6) //&& aPeople[intname] != "Emphty" && aRecPeople[intname] != "Emphty"
+    { 
+        intname--; 
+
+        while (Active == true)
+        {
+            if (intname <= 2 && aPeople[intname] != "Emphty"){
+            SC.WriteLine($"Do you want to move {aPeople[intname]} to the recruted list?");
+            SC.WriteLine("Write: Yes or No.");
+            } if (intname >= 3 && aRecPeople[intname] != "Emphty"){
+                intname=-4;
+            SC.WriteLine($"Do you want to move {aRecPeople[intname]} to the recruted list?");
+            SC.WriteLine("Write: Yes or No.");
+                intname=+4;    
+            }
+
+            Choice = SC.ReadLine().ToLower();
+            if (Choice == "yes")
+            {
+                if (intname <= 2){
+                Active = false;
+                listrecrutedPeople.Add(aPeople[intname]);
+                listPeople.Add(aRecPeople[intname]);
+                listPeople.RemoveAt(intname);
+                } else {
+                Active = false;
+                intname=-4;
+                listPeople.Add(aRecPeople[intname]);
+                listrecrutedPeople.Add(aPeople[intname]);
+                listrecrutedPeople.RemoveAt(intname);    
+                }
+            }
+            else if (Choice == "no") { Active = false; }
+        }
+
+        
     }
-    else if(Choice == "no"){Active = false;}
-}
-break;
-case (string)("2"):
-SC.WriteLine($"Do you want to move {aPeople[^2]} to the recruted list?");
-SC.ReadLine();
-break;
-case (string)("3"):
-SC.WriteLine($"Do you want to move {aPeople[^3]} to the recruted list?");
-SC.ReadLine();
-break;
-
-case (string)("4"):
-SC.WriteLine($"Do you want to move {aRecPeople[^1]} of the recruted list?");
-SC.ReadLine();
-break;
-case (string)("5"):
-SC.WriteLine($"Do you want to move {aRecPeople[^2]} of the recruted list?");
-SC.ReadLine();
-break;
-case (string)("6"):
-SC.WriteLine($"Do you want to move {aRecPeople[^3]} of the recruted list?");
-SC.ReadLine();
-break;
-
-
-
+    SC.Clear();
 }
 
-
-
-SC.Clear();
-}
 
 
 /*
